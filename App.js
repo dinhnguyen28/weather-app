@@ -1,14 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import {
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from 'react-native'
 
-export default function App() {
+export default function App () {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <SafeAreaView style={styles.container}>
+      <Text style={[styles.largeText, styles.textStyle]}>Viet Nam</Text>
+      <Text style={[styles.largeText, styles.textStyle]}>30</Text>
+      <Text style={[styles.smallText, styles.textStyle]}>Sunny</Text>
+
+      <TextInput
+        placeholder='Search any city'
+        placeholderTextColor='#fff'
+        style={styles.textInput}
+        clearButtonMode='always'
+      />
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -16,6 +30,33 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'top'
   },
-});
+  textStyle: {
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        fontFamily: 'Roboto'
+      },
+      android: {
+        fontFamily: 'Roboto'
+      }
+    })
+  },
+  smallText: {
+    fontSize: 18
+  },
+  largeText: {
+    fontSize: 44
+  },
+  textInput: {
+    backgroundColor: '#999',
+    color: '#fff',
+    width: 300,
+    height: 40,
+    marginTop: 20,
+    padding: 10,
+    borderRadius: 10,
+    fontSize: 14
+  }
+})
